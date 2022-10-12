@@ -1,1 +1,173 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+h1 {color:darkblue}
+h3 {color: darkcyan}
+* {margin: 10px;
+    padding: 2px;}
+
+*{background-color: lightgrey;}
+*{font-family: 'Times New Roman', Times, serif;}
+
+
+
+.banner{border-radius: 32px;
+        margin:10px 10px;
+        padding: 10px;
+        border-color: black;
+        width: 90vw;
+}
+
+.bloque{ background-color: antiquewhite;}
+
+.circulo{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin-bottom: -190px;
+}
+
+.circulo >.perfil{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    position: relative;
+    top: -180px;
+    margin-left: 50px;
+}
+
+.intro{background-color:lightgray ;}
+
+.skills-bar .bar{
+    margin:20px 0;
+    font-weight: 500;
+}
+
+.skills-bar .bar .linea-progresiva{
+    position: relative;
+    height: 10px;
+    width: 95%;
+    background: #f0f0f0;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+    left: -5px;
+}
+
+.bar .linea-progresiva span{
+    height: 100%;
+    width: 80%;
+    background: lightgreen;
+    position: absolute;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+    top: -12px;
+    left: -10px;
+}
+
+@keyframes animate {
+    100%{
+        transform: scaleX(1);
+    }
+    
+}
+
+.linea-progresiva.liderazgo span{
+    width:70%;
+}
+.linea-progresiva.html span{
+    width:80%;
+}
+.linea-progresiva.css span{
+    width:60%;
+}
+.linea-progresiva.python span{
+    width:80%;
+}
+.linea-progresiva.ruby span{
+    width:50%;
+}
+.linea-progresiva.libros span{
+    width:80%;
+}
+.linea-progresiva.excel span{
+    width:70%;
+}
+.linea-progresiva.javascript span{
+    width:70%;
+}
+.linea-progresiva.ingles span{
+    width:75%;
+}
+.linea-progresiva.postgres span{
+    width:60%;
+}
+
+.bar .linea-progresiva span::before{
+    position:absolute;
+    content:"";
+    right: 0;
+    top:-10px;
+    height: 0;
+    width: 0;
+    border:7px solid transparent;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-top-color: #000;
+    opacity: 0;
+    animation: showText2 1s 1s linear forwards;
+}
+
+.bar .linea-progresiva span::after{
+    position:absolute;
+    right: 0;
+    top:-28px;
+    color:#fff;
+    font-size: 12px;
+    font-weight: 500;
+    background: #000;
+    padding: 1px 8px;
+    border-radius: 3px;
+    opacity: 0;
+    animation: showText2 1s 1s linear forwards;
+}
+
+@keyframes showText2 {
+    100%{
+        opacity: 1;
+    }
+}
+
+.linea-progresiva.liderazgo span::after{
+    content:"70%";
+}
+.linea-progresiva.html span::after{
+    content:"80%";
+}
+.linea-progresiva.css span::after{
+    content:"60%";
+}
+.linea-progresiva.python span::after{
+    content:"80%";
+}
+.linea-progresiva.ruby span::after{
+    content:"50%";
+}
+.linea-progresiva.libros span::after{
+    content:"80%";
+}
+.linea-progresiva.excel span::after{
+    content:"70%";
+}
+.linea-progresiva.javascript span::after{
+    content:"70%";
+}
+.linea-progresiva.ingles span::after{
+    content:"75%";
+}
+.linea-progresiva.postgres span::after{
+    content:"60%";
+}
+
