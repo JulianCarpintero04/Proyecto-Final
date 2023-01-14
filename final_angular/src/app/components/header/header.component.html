@@ -1,5 +1,13 @@
-<div class="barra">
-    <h1>Portfolio Web- Julian Carpintero</h1>
-    <h3>Argentina Programa</h3>
-    <h3>#YoProgramo</h3>
+<div>
+    <img class="banner" src="https://p4.wallpaperbetter.com/wallpaper/631/564/936/web-development-desk-flatdesign-wallpaper-preview.jpg" class="img-fluid" alt="Banner portfolio">
+</div>
+
+<div *ngIf="usuario" class="circulo">
+    <img src="{{usuario.fotoPerfil}}" class="perfil">
+</div>
+<div *ngIf="usuario" class="intro">
+    <h2>{{usuario.nombre}}</h2>
+    <h2>{{usuario.apellido}}</h2>
+    <h4>{{usuario.titulo}}</h4>
+    <h4>{{usuario.descripcion}}</h4>
 </div>

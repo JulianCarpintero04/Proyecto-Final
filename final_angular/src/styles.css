@@ -5,7 +5,7 @@ h3 {color: darkcyan}
 * {margin: 10px;
     padding: 2px;}
 
-*{background-color: lightgrey;}
+
 *{font-family: 'Times New Roman', Times, serif;}
 
 
@@ -17,7 +17,7 @@ h3 {color: darkcyan}
         width: 90vw;
 }
 
-.bloque{ background-color: antiquewhite;}
+.bloque{ background-color: lightgray ;}
 
 .circulo{
     width: 200px;
@@ -170,4 +170,6 @@ h3 {color: darkcyan}
 .linea-progresiva.postgres span::after{
     content:"60%";
 }
+
+
 

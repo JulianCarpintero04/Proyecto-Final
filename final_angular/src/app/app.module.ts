@@ -15,7 +15,7 @@ import { PortfolioService } from './servicio/portfolio.service';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { IniciarSesionComponent } from './components/iniciar-sesion/iniciar-sesion.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterceptorService } from './servicio/interceptor.service';
 
 @NgModule({
@@ -36,7 +36,8 @@ import { InterceptorService } from './servicio/interceptor.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [PortfolioService,
     { provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi: true},
