@@ -1,66 +1,226 @@
 <div class="bloque">
     <div class="skills-bar">
-        <h3>Hard & Soft skills</h3><button type="button" class="btn btn-primary">Editar</button>
-        <div class= "bar">
-            <div class="info">
-                <span>Liderazgo</span>
-            </div>
-            <div class="linea-progresiva liderazgo"><span></span></div>
+        <h3>Hard & Soft skills</h3>
+        <div class="text-center">
+            <button type="button" class="btn btn-success" 
+                    (click)="onOpenModal('add')" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#addHabilidadesModal">
+                <a class="nav-link" style="color: white">
+                    Agregar Habilidad<span class="sr-only"> (current) </span>
+                </a>
+            </button>
         </div>
-        <div class= "bar">
+        <div *ngFor="let habilidades of habilidadess" class= "bar">
             <div class="info">
-                <span>Python</span>
+                <span><h5>{{habilidades.nombreSkill}} - {{habilidades.porcentaje}}%</h5></span>
+                <div class="linea-progresiva"><span></span></div>
             </div>
-            <div class="linea-progresiva python"><span></span></div>
-        </div>
-        <div class= "bar">
-            <div class="info">
-                <span>HTML</span>
+            <div class="col text-center"> 
+                <button type="button" class="btn btn-primary" 
+                        (click)="onOpenModal('edit',habilidades)" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#editHabilidadesModal"
+                        >
+                    <a >
+                         <span class="sr-only"> (current) </span>
+                         <i class="fa fa-pencil"></i>
+                    </a>
+                </button>
+                <button type="button" class="btn btn-secondary" 
+                        (click)="onOpenModal('delete',habilidades)" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#deleteHabilidadesModal"
+                        >
+                    <a  >
+                         <span class="sr-only"> (current) </span>
+                         <i class="fa fa-times"></i>
+                    </a>
+                </button>
             </div>
-            <div class="linea-progresiva html"><span></span></div>
         </div>
-        <div class= "bar">
-            <div class="info">
-                <span>CSS</span>
-            </div>
-            <div class="linea-progresiva css"><span></span></div>
+    </div>
+    </div>
+
+    <!-- Modal agregar educacion-->
+<div class="modal fade" 
+id="addHabilidadesModal" 
+tabindex="-1" 
+role="dialog" 
+aria-labelledby="addHabilidadesModalLabel" 
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="addHabilidadesModalLabel">Agregar habilidad</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
         </div>
-        <div class= "bar">
-            <div class="info">
-                <span>Libros diarios y balances</span>
-            </div>
-            <div class="linea-progresiva libros"><span></span></div>
+        <div class="modal-body">
+            <form #addForm="ngForm" (ngSubmit)="onAddHabilidades(addForm)">
+                <div class="form-group">
+                    <label for="nombreSkill">Nombre de la habilidad</label>
+                    <input type="text"
+                    ngModel
+                    name="nombreSkill"
+                    class="form-control"
+                    id="nombreSkill"
+                    placeholder="Nombre de la habilidad"
+                    required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="porcentaje">Porcentaje</label>
+                    <input type="text"
+                    ngModel
+                    name="porcentaje"
+                    class="form-control"
+                    id="porcentaje"
+                    placeholder="Porcentaje"
+                    required
+                    >
+                </div>
+                
+                <div class="modal-footer">
+                    <button
+                    type="button"
+                    id="add-habilidades-form"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    >
+                    Cerrar
+                    </button>
+                    <button
+                    [disabled]="addForm.invalid"
+                    type="submit"
+                    class="btn btn-primary"
+                    >
+                    Aplicar Cambios
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class= "bar">
-            <div class="info">
-                <span>JavaScript</span>
-            </div>
-            <div class="linea-progresiva javascript"><span></span></div>
+    </div>
+</div>
+</div>
+
+<!-- Modal de editar educacion-->
+<div 
+class="modal fade" 
+id="editHabilidadesModal" 
+tabindex="-1" 
+role="dialog" 
+aria-labelledby="habilidadesEditModalLabel" 
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="updateHabilidadesModalLabel">
+                Editar Habilidad {{editHabilidades?.nombreSkill}}
+            </h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class= "bar">
-            <div class="info">
-                <span>PostgresSQL</span>
-            </div>
-            <div class="linea-progresiva postgres"><span></span></div>
-        </div>
-        <div class= "bar">
-            <div class="info">
-                <span>Ingles</span>
-            </div>
-            <div class="linea-progresiva ingles"><span></span></div>
-        </div>
-        <div class= "bar">
-            <div class="info">
-                <span>Excel</span>
-            </div>
-            <div class="linea-progresiva excel"><span></span></div>
-        </div>
-        <div class= "bar">
-            <div class="info">
-                <span>Ruby</span>
-            </div>
-            <div class="linea-progresiva ruby"><span></span></div>
-        </div>
+        <div class="modal-body">
+            <form #editForm="ngForm">
+                <div class="form-group">
+                    <label for="nombreSkill">Nombre de la habilidad</label>
+                    <input type="text"
+                    ngModel="{{ editHabilidades?.nombreSkill }}"
+                    name="nombreSkill"
+                    class="form-control"
+                    id="nombreSkill"
+                    aria-describedby="emailHelp"
+                    placeholder="Nombre de la habilidad"
+                    >
+                </div>
+                <input type="hidden"
+                    ngModel="{{ editHabilidades?.idSkill }}"
+                    name="idSkill"
+                    class="form-control"
+                    id="idSkill"
+                    placeholder=""
+                    >
+                <div class="form-group">
+                    <label for="porcentaje">Porcentaje</label>
+                    <input type="text"
+                    ngModel="{{ editHabilidades?.porcentaje }}"
+                    name="porcentaje"
+                    class="form-control"
+                    id="porcentaje"
+                    placeholder="Porcentaje"
+                    >
+                </div> 
     
+                <div class="modal-footer">
+                    <button
+                    type="button"
+                    id=""
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    >
+                    Cerrar
+                    </button>
+                    <button
+                    (click)="onUpdateHabilidades(editForm.value)"
+                    data-bs-dismiss="modal"
+                    class="btn btn-primary"
+                    >
+                    Aplicar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
+</div>
+
+<!-- Delete modal-->
+<div data-bs-toggle="modal"
+data-bs-target="deleteHabilidadesModal"
+class="modal fade" 
+id="deleteHabilidadesModal" 
+tabindex="-1" 
+role="dialog" 
+aria-labelledby="deleteModalLabel" 
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="deleteModalLabel">Borrar Habilidad</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p> Estas seguro de eliminar 
+                {{ deleteHabilidades?.nombreSkill }}
+                ?
+            </p>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    No
+                </button>
+                <button
+                    (click)="onDeleteHabilidades(deleteHabilidades!.idSkill)"
+                    data-bs-dismiss="modal"
+                    class="btn btn-danger"
+                >
+                    Si
+                </button>
+            </div>
+        </div>
     </div>
+</div>
+</div>
+
+<!-- Alerta cuando no hay datos en el campo-->
+
+<div *ngIf="habilidadess?.length == 0" class="col-lg-12 col-md-12 col-x1-12">
+<div class="alert alert-info" role="alert">
+    <h3 class="alert-heading">No hay habilidades!</h3>
+    <p>No fueron encontradas...</p>
+</div>
+</div>

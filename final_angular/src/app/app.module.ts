@@ -5,9 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
-import { ContactoComponent } from './components/contacto/contacto.component';
 import { EncabezadoComponent } from './components/encabezado/encabezado.component';
-import { AcercamioComponent } from './components/acercamio/acercamio.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
@@ -23,14 +21,12 @@ import { InterceptorService } from './servicio/interceptor.service';
     AppComponent,
     HeaderComponent,
     HabilidadesComponent,
-    ContactoComponent,
     EncabezadoComponent,
-    AcercamioComponent,
     ExperienciaComponent,
     EducacionComponent,
     ProyectosComponent,
     IniciarSesionComponent,
-    PortfolioComponent
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Proyectos } from 'src/app/models/proyectos';
+import { ProyectosService } from 'src/app/servicio/proyectos.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-proyectos',
@@ -7,9 +11,84 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProyectosComponent implements OnInit {
 
-  constructor() { }
+  public proyectoss:Proyectos[]=[];
+  public editProyectos: Proyectos | undefined;
+  public deleteProyectos:Proyectos | undefined;
+
+  constructor(private proyectosService: ProyectosService) { }
 
   ngOnInit(): void {
+    this.getProyectoss();
+  }
+
+  public getProyectoss():void{
+    this.proyectosService.getProyectos().subscribe({
+      next:(Response: Proyectos[])=>{
+        this.proyectoss=Response;
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    })
+  }
+
+  public onOpenModal(mode: String, proyectos?: Proyectos):void{
+    const container=document.getElementById('main-container');
+    const button=document.createElement('button');
+    button.style.display='none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if(mode==='add'){
+      button.setAttribute('data-bs-target', '#addProyectosModal');
+    }else if(mode==='delete'){
+      this.deleteProyectos=proyectos;
+      button.setAttribute('data-bs-target','#deleteProyectosModal');
+    }else if(mode==='edit'){
+      this.editProyectos=proyectos;
+      button.setAttribute('data-bs-target','#editProyectosModal');
+    }
+    container?.appendChild(button);
+    button.click();
+
+  }
+  public onAddProyectos(addForm: NgForm){
+    document.getElementById('add-proyectos-form')?.click();
+    this.proyectosService.addProyectos(addForm.value).subscribe({
+      next: (response:Proyectos) => {
+        console.log(response);
+        this.getProyectoss();
+        addForm.reset();
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+        addForm.reset();
+      }
+    })
+  }
+
+  public onUpdateProyectos(proyectos: Proyectos){
+    this.editProyectos=proyectos;
+    document.getElementById('add-proyectos-form')?.click();
+    this.proyectosService.updateProyectos(proyectos).subscribe({
+      next: (response:Proyectos) => {
+        console.log(response);
+        this.getProyectoss();
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    })
+  }
+
+  public onDeleteProyectos(idPro: number):void{
+    this.proyectosService.deleteProyectos(idPro).subscribe({
+      next: (response:void) => {
+        console.log(response);
+        this.getProyectoss();
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    })
   }
 
 }

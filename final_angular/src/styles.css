@@ -74,36 +74,10 @@ h3 {color: darkcyan}
     
 }
 
-.linea-progresiva.liderazgo span{
+.linea-progresiva span{
     width:70%;
 }
-.linea-progresiva.html span{
-    width:80%;
-}
-.linea-progresiva.css span{
-    width:60%;
-}
-.linea-progresiva.python span{
-    width:80%;
-}
-.linea-progresiva.ruby span{
-    width:50%;
-}
-.linea-progresiva.libros span{
-    width:80%;
-}
-.linea-progresiva.excel span{
-    width:70%;
-}
-.linea-progresiva.javascript span{
-    width:70%;
-}
-.linea-progresiva.ingles span{
-    width:75%;
-}
-.linea-progresiva.postgres span{
-    width:60%;
-}
+
 
 .bar .linea-progresiva span::before{
     position:absolute;
@@ -140,36 +114,10 @@ h3 {color: darkcyan}
     }
 }
 
-.linea-progresiva.liderazgo span::after{
+.linea-progresiva span::after{
     content:"70%";
 }
-.linea-progresiva.html span::after{
-    content:"80%";
-}
-.linea-progresiva.css span::after{
-    content:"60%";
-}
-.linea-progresiva.python span::after{
-    content:"80%";
-}
-.linea-progresiva.ruby span::after{
-    content:"50%";
-}
-.linea-progresiva.libros span::after{
-    content:"80%";
-}
-.linea-progresiva.excel span::after{
-    content:"70%";
-}
-.linea-progresiva.javascript span::after{
-    content:"70%";
-}
-.linea-progresiva.ingles span::after{
-    content:"75%";
-}
-.linea-progresiva.postgres span::after{
-    content:"60%";
-}
+
 
 
 
